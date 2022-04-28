@@ -17,6 +17,13 @@ public class ItemDTO implements Serializable {
     public ItemDTO() {
     }
 
+    public ItemDTO(ItemDTO itemDTO) {
+        this.code = itemDTO.code;
+        this.description = itemDTO.description;
+        this.unitPrice = itemDTO.unitPrice;
+        this.qtyOnHand = itemDTO.qtyOnHand;
+    }
+
     public ItemDTO(String code, String description, BigDecimal unitPrice, int qtyOnHand) {
         this.code = code;
         this.description = description;

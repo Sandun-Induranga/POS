@@ -7,7 +7,6 @@ import model.CustomerDTO;
 import view.tdm.CustomerTM;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class CustomerDAOImpl {
     public ObservableList<CustomerTM> getAllCustomer() throws SQLException, ClassNotFoundException {
