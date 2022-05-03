@@ -40,6 +40,7 @@ public class ManageItemsFormController {
     public TableView<ItemTM> tblItems;
     public JFXTextField txtUnitPrice;
     public JFXButton btnAddNewItem;
+    private ItemDaoImpl itemDao = new ItemDaoImpl();
 
     public void initialize() {
         tblItems.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -75,7 +76,6 @@ public class ManageItemsFormController {
         tblItems.getItems().clear();
         try {
             /*Get all items*/
-            ItemDaoImpl itemDao = new ItemDaoImpl();
             tblItems.setItems(itemDao.getAllItems());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -132,7 +132,6 @@ public class ManageItemsFormController {
             if (!existItem(code)) {
                 new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
             }
-            ItemDAO itemDao = new ItemDaoImpl();
             tblItems.setItems(itemDao.deleteItem(code));
             initUI();
         } catch (SQLException e) {
@@ -170,7 +169,6 @@ public class ManageItemsFormController {
                     new Alert(Alert.AlertType.ERROR, code + " already exists").show();
                 }
                 //Save Item
-                ItemDAO itemDao = new ItemDaoImpl();
                 tblItems.setItems(itemDao.saveItem(itemDTO));
 
             } catch (SQLException e) {
@@ -185,7 +183,6 @@ public class ManageItemsFormController {
                     new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
                 }
                 /*Update Item*/
-                ItemDAO itemDao = new ItemDaoImpl();
                 tblItems.setItems(itemDao.updateItem(itemDTO));
 
             } catch (SQLException e) {
@@ -200,14 +197,12 @@ public class ManageItemsFormController {
 
 
     private boolean existItem(String code) throws SQLException, ClassNotFoundException {
-        ItemDAO itemDao = new ItemDaoImpl();
         return itemDao.isExists(code);
     }
 
 
     private String generateNewId() {
         try {
-            ItemDAO itemDao = new ItemDaoImpl();
             return itemDao.generateId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
