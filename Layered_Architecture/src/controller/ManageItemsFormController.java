@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import dao.ItemDAO;
 import dao.ItemDaoImpl;
 import db.DBConnection;
 import javafx.application.Platform;
@@ -131,7 +132,7 @@ public class ManageItemsFormController {
             if (!existItem(code)) {
                 new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
             }
-            ItemDaoImpl itemDao = new ItemDaoImpl();
+            ItemDAO itemDao = new ItemDaoImpl();
             tblItems.setItems(itemDao.deleteItem(code));
             initUI();
         } catch (SQLException e) {
@@ -169,7 +170,7 @@ public class ManageItemsFormController {
                     new Alert(Alert.AlertType.ERROR, code + " already exists").show();
                 }
                 //Save Item
-                ItemDaoImpl itemDao = new ItemDaoImpl();
+                ItemDAO itemDao = new ItemDaoImpl();
                 tblItems.setItems(itemDao.saveItem(itemDTO));
 
             } catch (SQLException e) {
@@ -184,7 +185,7 @@ public class ManageItemsFormController {
                     new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
                 }
                 /*Update Item*/
-                ItemDaoImpl itemDao = new ItemDaoImpl();
+                ItemDAO itemDao = new ItemDaoImpl();
                 tblItems.setItems(itemDao.updateItem(itemDTO));
 
             } catch (SQLException e) {
@@ -199,14 +200,14 @@ public class ManageItemsFormController {
 
 
     private boolean existItem(String code) throws SQLException, ClassNotFoundException {
-        ItemDaoImpl itemDao = new ItemDaoImpl();
+        ItemDAO itemDao = new ItemDaoImpl();
         return itemDao.isExists(code);
     }
 
 
     private String generateNewId() {
         try {
-            ItemDaoImpl itemDao = new ItemDaoImpl();
+            ItemDAO itemDao = new ItemDaoImpl();
             return itemDao.generateId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

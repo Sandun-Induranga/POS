@@ -11,7 +11,7 @@ import view.tdm.ItemTM;
 import java.math.BigDecimal;
 import java.sql.*;
 
-public class ItemDaoImpl {
+public class ItemDaoImpl implements ItemDAO{
     public ObservableList<ItemTM> getAllItems() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDbConnection().getConnection();
         Statement stm = connection.createStatement();

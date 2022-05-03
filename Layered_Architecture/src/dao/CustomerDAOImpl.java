@@ -8,7 +8,7 @@ import view.tdm.CustomerTM;
 
 import java.sql.*;
 
-public class CustomerDAOImpl {
+public class CustomerDAOImpl implements CustomerDAO {
     public ObservableList<CustomerTM> getAllCustomer() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDbConnection().getConnection();
         Statement stm = connection.createStatement();
