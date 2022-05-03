@@ -162,7 +162,7 @@ public class ManageItemsFormController {
         int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
         BigDecimal unitPrice = new BigDecimal(txtUnitPrice.getText()).setScale(2);
 
-        ItemDTO itemDTO = new ItemDTO(code,description,unitPrice,qtyOnHand);
+        ItemDTO itemDTO = new ItemDTO(code, description, unitPrice, qtyOnHand);
         if (btnSave.getText().equalsIgnoreCase("save")) {
             try {
                 if (existItem(code)) {
