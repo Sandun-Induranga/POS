@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import dao.CrudDAO;
 import dao.ItemDaoImpl;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -38,7 +39,7 @@ public class ManageItemsFormController {
     public TableView<ItemTM> tblItems;
     public JFXTextField txtUnitPrice;
     public JFXButton btnAddNewItem;
-    private ItemDaoImpl itemDao = new ItemDaoImpl();
+    private CrudDAO<ItemTM, String, ItemDTO> itemDao = new ItemDaoImpl();
 
     public void initialize() {
         tblItems.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -74,7 +75,7 @@ public class ManageItemsFormController {
         tblItems.getItems().clear();
         try {
             /*Get all items*/
-            tblItems.setItems(itemDao.getAllItems());
+            tblItems.setItems(itemDao.getAll());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         } catch (ClassNotFoundException e) {
@@ -130,7 +131,7 @@ public class ManageItemsFormController {
             if (!existItem(code)) {
                 new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
             }
-            tblItems.setItems(itemDao.deleteItem(code));
+            tblItems.setItems(itemDao.delete(code));
             initUI();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "Failed to delete the item " + code).show();
@@ -167,7 +168,7 @@ public class ManageItemsFormController {
                     new Alert(Alert.AlertType.ERROR, code + " already exists").show();
                 }
                 //Save Item
-                tblItems.setItems(itemDao.saveItem(itemDTO));
+                tblItems.setItems(itemDao.save(itemDTO));
 
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -181,7 +182,7 @@ public class ManageItemsFormController {
                     new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
                 }
                 /*Update Item*/
-                tblItems.setItems(itemDao.updateItem(itemDTO));
+                tblItems.setItems(itemDao.update(itemDTO));
 
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -195,13 +196,13 @@ public class ManageItemsFormController {
 
 
     private boolean existItem(String code) throws SQLException, ClassNotFoundException {
-        return itemDao.isExists(code);
+        return itemDao.exist(code);
     }
 
 
     private String generateNewId() {
         try {
-            return itemDao.generateId();
+            return itemDao.generateNewId();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         } catch (ClassNotFoundException e) {
