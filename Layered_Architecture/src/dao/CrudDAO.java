@@ -8,16 +8,16 @@ import view.tdm.CustomerTM;
 
 import java.sql.*;
 
-public interface CrudDAO {
-    public ObservableList<CustomerTM> getAll() throws SQLException, ClassNotFoundException;
+public interface CrudDAO<T,ID,I> {
+    ObservableList<T> getAll() throws SQLException, ClassNotFoundException;
 
-    public ObservableList<CustomerTM> save(CustomerDTO customer) throws SQLException, ClassNotFoundException;
+    ObservableList<T> save(I customer) throws SQLException, ClassNotFoundException;
 
-    public ObservableList<CustomerTM> update(CustomerDTO customer) throws SQLException, ClassNotFoundException;
+    ObservableList<T> update(I customer) throws SQLException, ClassNotFoundException;
 
-    public boolean exist(String id) throws SQLException, ClassNotFoundException;
+    boolean exist(ID id) throws SQLException, ClassNotFoundException;
 
-    public ObservableList<CustomerTM> delete(String id) throws SQLException, ClassNotFoundException;
+    ObservableList<T> delete(ID id) throws SQLException, ClassNotFoundException;
 
-    public String generateNewId() throws SQLException, ClassNotFoundException;
+    String generateNewId() throws SQLException, ClassNotFoundException;
 }

@@ -10,29 +10,29 @@ import view.tdm.ItemTM;
 
 import java.sql.*;
 
-public class ItemDaoImpl implements CrudDAO{
+public class ItemDaoImpl implements CrudDAO<ItemTM, String, ItemDTO> {
     @Override
-    public ObservableList<CustomerTM> getAll() throws SQLException, ClassNotFoundException {
+    public ObservableList<ItemTM> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public ObservableList<CustomerTM> save(CustomerDTO customer) throws SQLException, ClassNotFoundException {
+    public ObservableList<ItemTM> save(ItemDTO customer) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public ObservableList<CustomerTM> update(CustomerDTO customer) throws SQLException, ClassNotFoundException {
+    public ObservableList<ItemTM> update(ItemDTO customer) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+    public boolean exist(String s) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public ObservableList<CustomerTM> delete(String id) throws SQLException, ClassNotFoundException {
+    public ObservableList<ItemTM> delete(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 

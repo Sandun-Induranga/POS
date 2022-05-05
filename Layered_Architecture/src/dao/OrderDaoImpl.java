@@ -4,37 +4,39 @@ import db.DBConnection;
 import javafx.collections.ObservableList;
 import model.CustomerDTO;
 import model.ItemDTO;
+import model.OrderDTO;
 import model.OrderDetailDTO;
 import view.tdm.CustomerTM;
+import view.tdm.OrderTM;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDaoImpl implements CrudDAO{
+public class OrderDaoImpl implements CrudDAO<OrderTM, String, OrderDTO> {
     @Override
-    public ObservableList<CustomerTM> getAll() throws SQLException, ClassNotFoundException {
+    public ObservableList<OrderTM> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public ObservableList<CustomerTM> save(CustomerDTO customer) throws SQLException, ClassNotFoundException {
+    public ObservableList<OrderTM> save(OrderDTO customer) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public ObservableList<CustomerTM> update(CustomerDTO customer) throws SQLException, ClassNotFoundException {
+    public ObservableList<OrderTM> update(OrderDTO customer) throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+    public boolean exist(String s) throws SQLException, ClassNotFoundException {
         return false;
     }
 
     @Override
-    public ObservableList<CustomerTM> delete(String id) throws SQLException, ClassNotFoundException {
+    public ObservableList<OrderTM> delete(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
