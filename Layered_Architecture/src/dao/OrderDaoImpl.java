@@ -1,13 +1,8 @@
 package dao;
 
 import db.DBConnection;
-import javafx.collections.ObservableList;
-import model.CustomerDTO;
 import model.ItemDTO;
-import model.OrderDTO;
 import model.OrderDetailDTO;
-import view.tdm.CustomerTM;
-import view.tdm.OrderTM;
 
 import java.sql.*;
 import java.time.LocalDate;
