@@ -1,24 +1,34 @@
 package dao;
 
-import javafx.collections.ObservableList;
 import model.OrderDetailDTO;
-import view.tdm.OrderDetailTM;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class OrderDetailImpl implements CrudDAO<OrderDetailTM,String, OrderDetailDTO>{
+/**
+ * @author : Sanu Vithanage
+ * @since : 0.1.0
+ **/
+public class OrderDetailImpl implements CrudDAO<OrderDetailDTO, String> {
+
+
     @Override
-    public ObservableList<OrderDetailTM> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<OrderDetailDTO> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public ObservableList<OrderDetailTM> save(OrderDetailDTO customer) throws SQLException, ClassNotFoundException {
-        return null;
+    public boolean save(OrderDetailDTO dto) throws SQLException, ClassNotFoundException {
+        return SQLUtil.executeUpdate("INSERT INTO OrderDetails (oid, itemCode, unitPrice, qty) VALUES (?,?,?,?)", dto.getOid(), dto.getItemCode(), dto.getUnitPrice(), dto.getQty());
     }
 
     @Override
-    public ObservableList<OrderDetailTM> update(OrderDetailDTO customer) throws SQLException, ClassNotFoundException {
+    public boolean update(OrderDetailDTO dto) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public OrderDetailDTO search(String s) throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -28,12 +38,12 @@ public class OrderDetailImpl implements CrudDAO<OrderDetailTM,String, OrderDetai
     }
 
     @Override
-    public ObservableList<OrderDetailTM> delete(String s) throws SQLException, ClassNotFoundException {
-        return null;
+    public boolean delete(String s) throws SQLException, ClassNotFoundException {
+        return false;
     }
 
     @Override
-    public String generateNewId() throws SQLException, ClassNotFoundException {
+    public String generateNewID() throws SQLException, ClassNotFoundException {
         return null;
     }
 }

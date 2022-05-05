@@ -3,12 +3,10 @@ package model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * @author : Sanu Vithanage
- * @since : 0.1.0
- **/
 
 public class OrderDetailDTO implements Serializable {
+
+    private String oid;
     private String itemCode;
     private int qty;
     private BigDecimal unitPrice;
@@ -20,6 +18,21 @@ public class OrderDetailDTO implements Serializable {
         this.itemCode = itemCode;
         this.qty = qty;
         this.unitPrice = unitPrice;
+    }
+
+    public OrderDetailDTO(String oid, String itemCode, int qty, BigDecimal unitPrice) {
+        this.oid = oid;
+        this.itemCode = itemCode;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
+    }
+
+    public String getOid() {
+        return oid;
+    }
+
+    public void setOid(String oid) {
+        this.oid = oid;
     }
 
     public String getItemCode() {
@@ -48,10 +61,12 @@ public class OrderDetailDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "OrderDetailDTO{" +
-                "itemCode='" + itemCode + '\'' +
-                ", qty=" + qty +
-                ", unitPrice=" + unitPrice +
-                '}';
+        final StringBuffer sb = new StringBuffer("OrderDetailDTO{");
+        sb.append("oid='").append(oid).append('\'');
+        sb.append(", itemCode='").append(itemCode).append('\'');
+        sb.append(", qty=").append(qty);
+        sb.append(", unitPrice=").append(unitPrice);
+        sb.append('}');
+        return sb.toString();
     }
 }

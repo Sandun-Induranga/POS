@@ -1,23 +1,21 @@
 package dao;
 
-import db.DBConnection;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import model.CustomerDTO;
-import view.tdm.CustomerTM;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-import java.sql.*;
 
-public interface CrudDAO<T,ID,I> {
-    ObservableList<T> getAll() throws SQLException, ClassNotFoundException;
+public interface CrudDAO<T, ID> {
+    ArrayList<T> getAll() throws SQLException, ClassNotFoundException;
 
-    ObservableList<T> save(I customer) throws SQLException, ClassNotFoundException;
+    boolean save(T dto) throws SQLException, ClassNotFoundException;
 
-    ObservableList<T> update(I customer) throws SQLException, ClassNotFoundException;
+    boolean update(T dto) throws SQLException, ClassNotFoundException;
+
+    T search(ID id)throws SQLException,ClassNotFoundException;
 
     boolean exist(ID id) throws SQLException, ClassNotFoundException;
 
-    ObservableList<T> delete(ID id) throws SQLException, ClassNotFoundException;
+    boolean delete(ID id) throws SQLException, ClassNotFoundException;
 
-    String generateNewId() throws SQLException, ClassNotFoundException;
+    String generateNewID() throws SQLException, ClassNotFoundException;
 }
