@@ -83,8 +83,6 @@ public class ManageCustomersFormController {
         } catch (ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
-
     }
 
     private void initUI() {
@@ -123,7 +121,6 @@ public class ManageCustomersFormController {
         btnSave.setText("Save");
         tblCustomers.getSelectionModel().clearSelection();
     }
-
 
     public void btnSave_OnAction(ActionEvent actionEvent) {
         String id = txtCustomerId.getText();
@@ -180,7 +177,6 @@ public class ManageCustomersFormController {
         btnAddNewCustomer.fire();
     }
 
-
     boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
         return customerDAO.exist(id);
     }
@@ -224,7 +220,6 @@ public class ManageCustomersFormController {
             int newCustomerId = Integer.parseInt(id.replace("C", "")) + 1;
             return String.format("C00-%03d", newCustomerId);
         }
-
     }
 
     private String getLastCustomerId() {
@@ -232,5 +227,4 @@ public class ManageCustomersFormController {
         Collections.sort(tempCustomersList);
         return tempCustomersList.get(tempCustomersList.size() - 1).getId();
     }
-
 }
