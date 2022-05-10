@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class CustomerDAOImpl implements CustomerDAO {
 
-
     @Override
     public ArrayList<CustomerDTO> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.executeQuery("SELECT * FROM Customer");
@@ -25,7 +24,6 @@ public class CustomerDAOImpl implements CustomerDAO {
         return SQLUtil.executeUpdate("INSERT INTO Customer (id,name, address) VALUES (?,?,?)", dto.getId(), dto.getName(), dto.getAddress());
     }
 
-
     @Override
     public boolean update(CustomerDTO dto) throws SQLException, ClassNotFoundException {
         return SQLUtil.executeUpdate("UPDATE Customer SET name=?, address=? WHERE id=?", dto.getName(), dto.getAddress(), dto.getId());
@@ -40,12 +38,10 @@ public class CustomerDAOImpl implements CustomerDAO {
         return null;
     }
 
-
     @Override
     public boolean exist(String id) throws SQLException, ClassNotFoundException {
         return SQLUtil.executeQuery("SELECT id FROM Customer WHERE id=?", id).next();
     }
-
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
@@ -64,4 +60,9 @@ public class CustomerDAOImpl implements CustomerDAO {
         }
     }
 
+    //This is a unique method
+    @Override
+    public ArrayList<CustomerDTO> getAllCustomersByAddress(String address) {
+        return null;
+    }
 }

@@ -62,4 +62,9 @@ public class ItemDaoImpl implements ItemDAO {
             return "I00-001";
         }
     }
+
+    @Override
+    public ArrayList<ItemDTO> getAllItemsByPrice(double price) {
+        return null;
+    }
 }
