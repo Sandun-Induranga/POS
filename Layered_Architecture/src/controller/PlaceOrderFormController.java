@@ -7,10 +7,8 @@ import dao.*;
 import dao.custom.CustomerDAO;
 import dao.custom.ItemDAO;
 import dao.custom.OrderDAO;
-import dao.custom.impl.CustomerDAOImpl;
-import dao.custom.impl.ItemDaoImpl;
-import dao.custom.impl.OrderDaoImpl;
-import dao.custom.impl.OrderDetailImpl;
+import dao.custom.QueryDAO;
+import dao.custom.impl.*;
 import db.DBConnection;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -65,9 +63,9 @@ public class PlaceOrderFormController {
     private OrderDAO orderDAO = new OrderDaoImpl();
     private ItemDAO itemDAO = new ItemDaoImpl();
     private CustomerDAO customerDAO = new CustomerDAOImpl();
+    private QueryDAO queryDAO = new QueryDAOImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {
-
         tblOrderDetails.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("code"));
         tblOrderDetails.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("description"));
         tblOrderDetails.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("qty"));
