@@ -18,7 +18,7 @@ import java.util.List;
  * @author : Sanu Vithanage
  * @since : 0.1.0
  **/
-public class PurchaseOrderBOImpl implements PurchaseOrderBO{
+public class PurchaseOrderBOImpl implements PurchaseOrderBO {
 
     private final CustomerDAO customerDAO = new CustomerDAOImpl();
     private final ItemDAO itemDAO = new ItemDaoImpl();
@@ -42,7 +42,6 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO{
             connection.setAutoCommit(true);
             return false;
         }
-
         for (OrderDetailDTO detail : orderDetails) {
             boolean save1 = orderDetailsDAO.save(detail);
             if (!save1) {
@@ -50,7 +49,6 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO{
                 connection.setAutoCommit(true);
                 return false;
             }
-
             //Search & Update Item
 //                ItemDTO item = findItem(detail.getItemCode());
             ItemDTO item = null;
@@ -105,5 +103,4 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO{
     public ArrayList<ItemDTO> getAllItems() throws SQLException, ClassNotFoundException {
         return itemDAO.getAll();
     }
-
 }
