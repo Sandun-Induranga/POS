@@ -1,6 +1,8 @@
 package bo.custom.impl;
 
 import bo.custom.PurchaseOrderBO;
+import dao.DAOFactory;
+import dao.SuperDAO;
 import dao.custom.*;
 import dao.custom.impl.*;
 import db.DBConnection;
@@ -21,11 +23,11 @@ import java.util.List;
  **/
 public class PurchaseOrderBOImpl implements PurchaseOrderBO {
 
-    private final CustomerDAO customerDAO = new CustomerDAOImpl();
-    private final ItemDAO itemDAO = new ItemDaoImpl();
-    private final OrderDAO orderDAO = new OrderDaoImpl();
-    private final OrderDetailsDAO orderDetailsDAO = new OrderDetailImpl();
-    private final QueryDAO queryDAO = new QueryDAOImpl();
+    private final CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CUSTOMER);
+    private final ItemDAO itemDAO = (ItemDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ITEM);
+    private final OrderDAO orderDAO = (OrderDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ORDER);
+    private final OrderDetailsDAO orderDetailsDAO = (OrderDetailsDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ORDERDETAILS);
+    private final QueryDAO queryDAO = (QueryDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.QUERYDAO);
 
     @Override
     public boolean purchaseOrder(String orderId, LocalDate orderDate, String customerId, List<OrderDetailDTO> orderDetails) throws SQLException, ClassNotFoundException {
