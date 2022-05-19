@@ -15,7 +15,7 @@ public class OrderDTO  {
     private String customerId;
     private String customerName;
     private BigDecimal orderTotal;
-    List<OrderDetailDTO> orderDetails;
+    private List<OrderDetailDTO> orderDetails;
 
     public OrderDTO() {
     }
@@ -38,7 +38,7 @@ public class OrderDTO  {
         this.orderId=orderId;
         this.orderDate=orderDate;
         this.customerId=customerId;
-        this.orderDetails=orderDetails;
+        this.setOrderDetails(orderDetails);
     }
 
     public String getOrderId() {
@@ -90,5 +90,13 @@ public class OrderDTO  {
                 ", customerName='" + customerName + '\'' +
                 ", orderTotal=" + orderTotal +
                 '}';
+    }
+
+    public List<OrderDetailDTO> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetailDTO> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 }
