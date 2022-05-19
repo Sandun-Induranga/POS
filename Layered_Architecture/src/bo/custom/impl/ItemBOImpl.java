@@ -1,6 +1,7 @@
 package bo.custom.impl;
 
 import bo.custom.ItemBO;
+import bo.custom.SuperBO;
 import dao.DAOFactory;
 import dao.custom.ItemDAO;
 import dao.custom.impl.ItemDaoImpl;
@@ -9,7 +10,7 @@ import model.ItemDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ItemBOImpl implements ItemBO {
+public class ItemBOImpl implements ItemBO , SuperBO {
     private final ItemDAO itemDAO = (ItemDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ITEM);
 
     @Override

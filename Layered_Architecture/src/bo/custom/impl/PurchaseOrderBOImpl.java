@@ -1,6 +1,7 @@
 package bo.custom.impl;
 
 import bo.custom.PurchaseOrderBO;
+import bo.custom.SuperBO;
 import dao.DAOFactory;
 import dao.custom.*;
 import db.DBConnection;
@@ -19,7 +20,7 @@ import java.util.List;
  * @author : Sanu Vithanage
  * @since : 0.1.0
  **/
-public class PurchaseOrderBOImpl implements PurchaseOrderBO {
+public class PurchaseOrderBOImpl implements PurchaseOrderBO, SuperBO {
 
     private final CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.CUSTOMER);
     private final ItemDAO itemDAO = (ItemDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOTypes.ITEM);
