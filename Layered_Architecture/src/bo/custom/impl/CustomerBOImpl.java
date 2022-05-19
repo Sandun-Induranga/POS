@@ -4,7 +4,8 @@ import bo.custom.CustomerBO;
 import bo.SuperBO;
 import dao.DAOFactory;
 import dao.custom.CustomerDAO;
-import model.CustomerDTO;
+import dto.CustomerDTO;
+import entity.Customer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,17 +15,23 @@ public class CustomerBOImpl implements CustomerBO, SuperBO {
 
     @Override
     public ArrayList<CustomerDTO> getAllCustomer() throws SQLException, ClassNotFoundException {
-         return customerDAO.getAll();
+        ArrayList<CustomerDTO> allCustomers = new ArrayList<>();
+         ArrayList<Customer> all =  customerDAO.getAll();
+        for (Customer customer: all
+             ) {
+            allCustomers.add(new CustomerDTO(customer.getId(),customer.getName(),customer.getAddress()));
+        }
+        return allCustomers;
     }
 
     @Override
-    public boolean saveCustomer(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException {
-        return customerDAO.save(customerDTO);
+    public boolean saveCustomer(CustomerDTO customer) throws SQLException, ClassNotFoundException {
+        return customerDAO.save(new Customer(customer.getId(),customer.getName(),customer.getAddress()));
     }
 
     @Override
-    public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException {
-        return customerDAO.update(customerDTO);
+    public boolean updateCustomer(CustomerDTO customer) throws SQLException, ClassNotFoundException {
+        return customerDAO.update(new Customer(customer.getId(),customer.getName(),customer.getAddress()));
     }
 
     @Override

@@ -1,10 +1,11 @@
 package dao.custom;
 
 import dao.CrudDAO;
-import model.ItemDTO;
+import dto.ItemDTO;
+import entity.Item;
 
 import java.util.ArrayList;
 
-public interface ItemDAO extends CrudDAO<ItemDTO,String> {
-    public ArrayList<ItemDTO> getAllItemsByPrice(double price);
+public interface ItemDAO extends CrudDAO<Item,String> {
+    public ArrayList<Item> getAllItemsByPrice(double price);
 }
