@@ -1,7 +1,7 @@
 package bo.custom.impl;
 
 import bo.custom.PurchaseOrderBO;
-import bo.custom.SuperBO;
+import bo.SuperBO;
 import dao.DAOFactory;
 import dao.custom.*;
 import db.DBConnection;
